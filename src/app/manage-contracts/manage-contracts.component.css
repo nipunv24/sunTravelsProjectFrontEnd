@@ -1,0 +1,111 @@
+/* General container styling */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Title */
+  .page-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Contract card styling */
+  .contract-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contract-header {
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .contract-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .contract-header p {
+    font-size: 1rem;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  /* Contract body */
+  .contract-body {
+    padding-top: 15px;
+  }
+  
+  .room-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .room-item {
+    background-color: #fafafa;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .room-item p {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  /* Message when no contracts are found */
+  .no-contracts-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+    font-style: italic;
+  }
+
+  .contract-header {
+    position: relative; /* Ensure that the button is positioned relative to this container */
+  }
+  
+  .delete-btn {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  
+    .contract-card {
+      padding: 15px;
+    }
+  
+    .contract-header h2 {
+      font-size: 1.25rem;
+    }
+  
+    .room-item p {
+      font-size: 0.9rem;
+    }
+  }
+  

@@ -1,0 +1,41 @@
+<div class="container">
+  <h1 class="page-title">Manage Contracts</h1>
+
+  <!-- Check if contracts data is loaded -->
+  <div *ngIf="contracts.length > 0; else noContracts">
+    <div *ngFor="let contract of contracts" class="contract-card">
+      <div class="contract-header">
+        <h2>{{ contract.hotelName }}</h2>
+        <p><strong>Start Date:</strong> {{ formatDate(contract.startDate) }}</p>
+        <p><strong>End Date:</strong> {{ formatDate(contract.endDate) }}</p>
+        <p><strong>Markup:</strong> {{ formatPercent(contract.markup) }}</p>
+
+        <!-- Delete Button positioned top-right -->
+        <button
+          class="delete-btn"
+          (click)="deleteContract(contract.contractId)"
+          style="background-color: red; color: white; padding: 10px; border: none; cursor: pointer; position: absolute; top: 10px; right: 10px;"
+        >
+          Delete Contract
+        </button>
+      </div>
+
+      <div class="contract-body">
+        <h3>Room Types:</h3>
+        <ul class="room-list">
+          <li *ngFor="let roomType of contract.roomTypes" class="room-item">
+            <p><strong>Room Type:</strong> {{ roomType.roomTypeName }}</p>
+            <p><strong>Base Price:</strong> {{ formatCurrency(roomType.basePrice) }}</p>
+            <p><strong>Number of Rooms:</strong> {{ roomType.numberOfRooms }}</p>
+            <p><strong>Max Adults:</strong> {{ roomType.maxAdults }}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template for when no contracts are found -->
+  <ng-template #noContracts>
+    <p class="no-contracts-message">No contracts available.</p>
+  </ng-template>
+</div>

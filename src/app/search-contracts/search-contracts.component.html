@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="back-btn-container">
+    <button (click)="goBack()" class="back-btn">Back to Home</button>
+  </div>
+
+  <h1 class="page-title">Search Contracts</h1>
+
+  <!-- Simplified form without ngForm validation -->
+  <form (ngSubmit)="submitSearchData()" class="search-form" novalidate>
+    <div class="form-group">
+      <label for="checkInDate">Check-In Date:</label>
+      <input
+        type="date"
+        id="checkInDate"
+        [(ngModel)]="checkInDate"
+        name="checkInDate"
+        required
+        class="form-input"
+        (ngModelChange)="saveFormData()"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="numberOfNights">Number of Nights:</label>
+      <input
+        type="number"
+        id="numberOfNights"
+        [(ngModel)]="numberOfNights"
+        name="numberOfNights"
+        required
+        min="1"
+        placeholder="Enter number of nights"
+        class="form-input"
+        (ngModelChange)="saveFormData()"
+      />
+    </div>
+
+    <div *ngFor="let selection of selections; let i = index" class="selection-container">
+      <div class="selection-card">
+        <h4>Selection {{ i + 1 }}</h4>
+
+        <div class="form-group">
+          <label for="numberOfRooms{{ i }}">Number of Rooms:</label>
+          <input
+            type="number"
+            id="numberOfRooms{{ i }}"
+            [(ngModel)]="selection.numberOfRooms"
+            name="numberOfRooms{{ i }}"
+            required
+            min="1"
+            placeholder="Enter number of rooms"
+            class="form-input"
+            (ngModelChange)="saveFormData()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="numberOfAdults{{ i }}">Number of Adults:</label>
+          <input
+            type="number"
+            id="numberOfAdults{{ i }}"
+            [(ngModel)]="selection.numberOfAdults"
+            name="numberOfAdults{{ i }}"
+            required
+            min="1"
+            placeholder="Enter number of adults"
+            class="form-input"
+            (ngModelChange)="saveFormData()"
+          />
+        </div>
+
+        <button type="button" (click)="removeSelection(i)" class="remove-btn">Remove Selection</button>
+      </div>
+    </div>
+
+    <button type="button" (click)="addSelection()" class="add-btn">Add Selection</button>
+    <button type="submit" class="submit-btn">Search</button>
+  </form>
+</div>

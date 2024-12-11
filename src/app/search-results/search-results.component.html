@@ -1,0 +1,19 @@
+<div class="container">
+    <!-- <div class="back-btn-container">
+      <button (click)="goBack()" class="back-btn">Back to Home</button>
+    </div> -->
+  
+    <h1 class="page-title">Search Results</h1>
+  
+    <div *ngIf="results.length > 0; else noResults">
+      <div *ngFor="let result of results" class="result-card">
+        <h4>{{ result.hotelName }} - {{ result.roomType }}</h4>
+        <p>Final Price: ${{ result.finalPrice }}</p>
+      </div>
+    </div>
+  
+    <ng-template #noResults>
+      <p>No results found for the selected criteria.</p>
+    </ng-template>
+  </div>
+  
