@@ -1,14 +1,23 @@
-<div class="home-container">
-  <h1>Welcome to Sun Travels!</h1>
+<div class="home-container" [style.backgroundImage]="'url(' + imagePath + ')'" >
+  <!-- Logo Section -->
+  <div class="logo-container">
+    <img [src]="logoPath" alt="Logo" class="logo">
+  </div>
+
+  <div>
+    <h1 class="main-heading">Welcome to Sun Travels!</h1>
+  </div>
+
   <div class="button-container">
-    <button (click)="navigateToAddContract()" class="custom-button add-contract">
-      Add Contracts
-    </button>
-    <button (click)="navigateToManageContracts()" class="custom-button manage-contracts">
-      Manage & View Contracts
-    </button>
-    <button (click)="navigateToSearchContracts()" class="custom-button search-contracts">
-      Search Contracts
-    </button>
+    <div class="custom-button add-contract" (click)="navigateToAddContract()">
+      <span class="button-text">Add Contracts</span>
+    </div>
+    <div class="custom-button manage-contracts" (click)="navigateToManageContracts()">
+      <span class="button-text">Manage & View Contracts</span>
+    </div>
+    <div class="custom-button search-contracts" (click)="navigateToSearchContracts()">
+      <span class="button-text">Search Contracts</span>
+    </div>
   </div>
 </div>
+<app-footer></app-footer>

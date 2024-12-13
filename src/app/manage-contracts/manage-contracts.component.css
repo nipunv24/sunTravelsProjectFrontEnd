@@ -1,111 +1,212 @@
 /* General container styling */
 .container {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Title */
-  .page-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  /* Contract card styling */
-  .contract-card {
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .contract-header {
-    border-bottom: 2px solid #e0e0e0;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-  }
-  
-  .contract-header h2 {
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .contract-header p {
-    font-size: 1rem;
-    color: #555;
-    margin: 5px 0;
-  }
-  
-  /* Contract body */
-  .contract-body {
-    padding-top: 15px;
-  }
-  
-  .room-list {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .room-item {
-    background-color: #fafafa;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  }
-  
-  .room-item p {
-    margin: 5px 0;
-    font-size: 1rem;
-    color: #444;
-  }
-  
-  /* Message when no contracts are found */
-  .no-contracts-message {
-    text-align: center;
-    font-size: 1.2rem;
-    color: #888;
-    font-style: italic;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  font-family: 'Roboto Mono', monospace, Arial, sans-serif; /* Updated to use 'Roboto Mono' */
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: 'Roboto Mono', monospace; /* Apply 'Roboto Mono' here */
+}
+
+/* Grid container for hotel cards */
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px; /* Space between cards */
+  margin-top: 20px;
+}
+
+/* Hotel card styling */
+.hotel-card {
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+  font-family: 'Roboto Mono', monospace; /* Apply 'Roboto Mono' here */
+}
+
+.hotel-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.hotel-card-header {
+  text-align: center;
+}
+
+.hotel-card h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 10px 0;
+  font-family: 'Roboto Mono', monospace; /* Apply 'Roboto Mono' here */
+}
+
+.hotel-card p {
+  font-size: 1rem;
+  color: #666;
+  font-family: "Varela Round", sans-serif; /* Apply 'Roboto Mono' here */
+}
+
+/* Contract body */
+.contract-body {
+  padding-top: 15px;
+}
+
+.room-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.room-item {
+  background-color: #fafafa;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.room-item p {
+  margin: 5px 0;
+  font-size: 1rem;
+  color: #444;
+  font-family: "Varela Round", sans-serif; /* Apply 'Roboto Mono' here */
+}
+
+/* Message when no contracts are found */
+.no-contracts-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+  font-style: italic;
+  font-family: "Varela Round", sans-serif; /* Apply 'Roboto Mono' here */
+}
+
+.contract-header {
+  position: relative; /* Ensure that the button is positioned relative to this container */
+}
+
+
+
+.back-btn {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-family: "Varela Round", sans-serif; /* Apply 'Roboto Mono' here */
+}
+
+/* Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup Content */
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Varela Round", sans-serif; /* Apply 'Roboto Mono' here */
+}
+
+.popup-content h2 {
+  margin-top: 0;
+}
+
+
+
+.popup-content button:hover {
+  background-color: #0056b3;
+}
+
+/* Button container */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Delete Contract Button */
+.delete-btn {
+  background-color: red;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Roboto Mono', monospace;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-family: "Varela Round", sans-serif;
+}
+
+.delete-btn:hover {
+  background-color: darkred;
+}
+
+/* Close Button */
+.close-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Roboto Mono', monospace;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  font-family: "Varela Round", sans-serif;
+}
+
+.close-btn:hover {
+  background-color: #0056b3;
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+      padding: 15px;
   }
 
-  .contract-header {
-    position: relative; /* Ensure that the button is positioned relative to this container */
-  }
-  
-  .delete-btn {
-    background-color: red;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
-  
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .container {
+  .contract-card {
       padding: 15px;
-    }
-  
-    .contract-card {
-      padding: 15px;
-    }
-  
-    .contract-header h2 {
+  }
+
+  .contract-header h2 {
       font-size: 1.25rem;
-    }
-  
-    .room-item p {
-      font-size: 0.9rem;
-    }
   }
-  
+
+  .room-item p {
+      font-size: 0.9rem;
+  }
+
+  /* Adjust the grid layout for smaller screens */
+  .hotel-grid {
+      grid-template-columns: repeat(1, 1fr); /* 1 column on mobile */
+  }
+}

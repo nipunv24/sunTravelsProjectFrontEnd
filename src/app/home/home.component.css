@@ -1,50 +1,115 @@
 /* Container for the entire home page */
 .home-container {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    padding: 20px;
-  }
-  
-  /* Styling for the header */
-  .home-container h1 {
-    color: #031a1a;
-  }
-  
-  /* Container for the buttons */
-  .button-container {
-    margin-top: 20px;
-  }
-  
-  /* Common button styles */
-  .custom-button {
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  /* Specific styles for the "Add Contract" button */
-  .custom-button.add-contract {
-    background-color: #076575;
-  }
-  
-  /* Specific styles for the "Manage & View Contracts" button */
-  .custom-button.manage-contracts {
-    background-color: #073468 ;
-  }
+  text-align: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;  /* Ensure the background covers the full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;  /* Space items evenly */
+  align-items: center;
+  position: relative; /* Make the container position relative */
+}
 
-  .custom-button.search-contracts {
-    background-color:#0c0b4e;
-  }
-  
-  /* Hover effect for buttons */
-  .custom-button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
-  }
-  
+/* Styling for the logo */
+.logo-container {
+  position: absolute; /* Position the logo absolutely */
+  top: 20px;  /* Adjust the distance from the top */
+  right: 20px; /* Adjust the distance from the right */
+  z-index: 10;  /* Ensure the logo stays on top */
+}
+
+.logo {
+  width: 12vw;  /* Adjust the width of the logo */
+  height: auto;  /* Maintain the aspect ratio */
+}
+
+/* Styling for the header */
+.home-container .main-heading {
+  color: #ffffff; /* White text to contrast with the background */
+  font-size: 3rem;  /* Increase font size */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow for better readability */
+  margin-bottom: 20px;  /* Add some spacing below the header */
+  text-transform: uppercase;
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 2px;
+}
+
+/* Container for the buttons */
+.button-container {
+  display: flex;
+  justify-content: space-evenly; /* Distribute buttons evenly */
+  width: 100%; /* Ensure buttons span across the full screen width */
+  gap: 20px; /* Space between cards */
+}
+
+/* Styling for each button card */
+.custom-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.4);  /* Light border for separation */
+  padding: 40px 20px;
+  width: 15%; /* Adjust width of the button cards */
+  border-radius: 20px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  background-color: rgba(255, 255, 255, 0.4); /* Transparent background with black tint */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  height: 20px;  /* Set fixed height for the cards */
+  text-align: center;
+  position: relative;
+  text-transform: uppercase;
+  font-family: 'Roboto Mono', monospace;
+  letter-spacing: 2px;
+}
+
+/* Styling for button text */
+.custom-button .button-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-top: 10px;
+    /* Add text border effect */
+    -webkit-background-clip: text;
+    background-image: linear-gradient(45deg, #ff00ff, #00ffff, #ff6600); /* Color gradient */
+    text-shadow: 
+      1px 1px 2px black, 
+      0 0 25px #00ffff, 
+      0 0 5px #ff00ff, 
+      0 0 10px #ff6600;
+}
+
+/* Specific styles for the "Add Contract" button */
+.custom-button.add-contract {
+  background-color: rgba(6, 76, 89, 0.8); /* Slight tint of blue */
+}
+
+/* Specific styles for the "Manage & View Contracts" button */
+.custom-button.manage-contracts {
+  background-color: rgba(6, 150, 89, 0.8); /* Slight tint of dark blue */
+}
+
+/* Specific styles for the "Search Contracts" button */
+.custom-button.search-contracts {
+  background-color: rgba(6, 76, 89, 0.8); /* Slight tint of dark purple */
+}
+
+/* Hover effect for buttons */
+.custom-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.8);
+  background-color: rgba(15, 107, 208 0.2);  /* Lightens on hover for visual effect */
+}
+
+/* Active state effect */
+.custom-button:active {
+  transform: scale(1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+

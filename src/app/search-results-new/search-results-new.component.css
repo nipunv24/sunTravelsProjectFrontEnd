@@ -1,0 +1,71 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .back-btn-container {
+    margin-bottom: 20px;
+  }
+  
+  .back-btn {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .back-btn:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .page-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .no-results {
+    text-align: center;
+    color: #777;
+    margin-top: 20px;
+  }
+  
+  .hotel-result {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hotel-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .room-info {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+  }
+  
+  .room-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .room-info p strong {
+    color: #000;
+  }
+  

@@ -68,19 +68,19 @@ export class SearchContractsComponent implements OnInit {
         this.results = response; // Assign fetched results to display later
         console.log('Search Results:', response);
 
-        // Navigate to the search results page and pass the search data via query parameters
-        this.router.navigate(['/search-results'], {
+        // Navigate to the new search results page with fetched data
+        this.router.navigate(['/search-results-new'], {
           queryParams: {
             checkInDate: this.checkInDate,
             numberOfNights: this.numberOfNights,
-            selections: JSON.stringify(this.selections) // Convert selections to string
-          }
+            selections: JSON.stringify(this.selections), // Serialize the selections array
+          },
         });
         sessionStorage.removeItem('searchFormData'); // Clear session storage after search
       },
       error: (err) => {
         console.error('Search Error:', err);
-        alert('Failed to complete the search. Please try again later.');
+        alert(err);
       }
     });
   }

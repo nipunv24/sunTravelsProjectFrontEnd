@@ -4,6 +4,7 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
 import { DatePipe, CurrencyPipe, PercentPipe } from '@angular/common';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -12,6 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     DatePipe,
     CurrencyPipe,
-    PercentPipe
+    PercentPipe, provideAnimationsAsync()
   ],
 };
