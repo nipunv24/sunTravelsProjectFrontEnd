@@ -64,16 +64,20 @@
 }
 
 .room-list {
-  list-style-type: none;
-  padding-left: 0;
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  gap: 20px; /* Add space between items */
+  padding-left: 0; /* Ensure no unwanted padding */
+  list-style: none;
 }
 
 .room-item {
+  flex: 1 1 calc(50% - 20px); /* Each item takes 50% of the row minus the gap */
   background-color: #fafafa;
   padding: 10px;
   border-radius: 5px;
-  margin-bottom: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 10px; /* Add space between rows */
 }
 
 .room-item p {
@@ -132,17 +136,23 @@
   width: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   font-family: "Varela Round", sans-serif; /* Apply 'Roboto Mono' here */
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
-.popup-content h2 {
-  margin-top: 0;
+.popup-content::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
 }
 
-
-
-.popup-content button:hover {
-  background-color: #0056b3;
+.popup-content::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2); /* Color of the scroll thumb */
+  border-radius: 4px; /* Rounded edges for the scrollbar */
 }
+
+.popup-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.4); /* Darker color on hover */
+}
+
 
 /* Button container */
 .button-container {
@@ -159,7 +169,7 @@
   padding: 12px 20px;
   border: none;
   cursor: pointer;
-  font-family: 'Roboto Mono', monospace;
+
   border-radius: 5px;
   transition: background-color 0.3s;
   font-family: "Varela Round", sans-serif;
@@ -185,6 +195,55 @@
 .close-btn:hover {
   background-color: #0056b3;
 }
+
+/*Logo Container and Logo Css Code*/
+.logo-container {
+  position: absolute; /* Position the logo absolutely */
+  top: 20px;  /* Adjust the distance from the top */
+  right: 20px; /* Adjust the distance from the right */
+  z-index: 10;  /* Ensure the logo stays on top */
+}
+
+.logo {
+  width: 12vw;  /* Adjust the width of the logo */
+  height: auto;  /* Maintain the aspect ratio */
+}
+
+.success-message {
+  background-color: #e0f7e9; /* Light green for success */
+  color: #256029; /* Dark green for text */
+  border: 1px solid #b2dfbb; /* Subtle border to match background */
+  padding: 15px 20px; /* Comfortable padding */
+  margin: 20px auto; /* Center and add space */
+  text-align: center; /* Center the text */
+  border-radius: 10px; /* Rounded corners for modern look */
+  font-size: 1.1rem; /* Slightly larger font size */
+  font-weight: bold; /* Make the message stand out */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 400px; /* Restrict width to keep it compact */
+  transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth fade-in/out and scale effect */
+  opacity: 1; /* Default visible */
+  transform: scale(1); /* Default size */
+  animation: fadeInOut 3.5s ease forwards; /* Custom fade in and out animation */
+  font-family: "Varela Round", sans-serif;
+}
+
+/* Fade-in and fade-out animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
 
 
 /* Responsive design */

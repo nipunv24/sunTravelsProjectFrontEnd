@@ -48,6 +48,6 @@ postContractData(contractData: any): Observable<any> {
       // Extract the error message from the backend
       errorMessage = error.error;
     }
-    return throwError(errorMessage);
+    return throwError(() => new Error(errorMessage)); 
   }
 }

@@ -1,148 +1,160 @@
-<div class="container">
-  <div class="back-btn-container">
-    <button (click)="goBack()" class="back-btn">
-      <span class="material-icons">arrow_back</span>
-    </button>
-  </div>
-
-  <h1 class="page-title">{{ title }}</h1>
-
-  <form (submit)="submitContractData(); $event.preventDefault()" class="contract-form">
-    <div class="form-group">
-      <label for="hotelName">Hotel Name: <span *ngIf="loadedWrong" class="required-text">(Required)</span></label>
-      <input
-        type="text"
-        id="hotelName"
-        [(ngModel)]="hotelName"
-        name="hotelName"
-        required
-        placeholder="Enter hotel name"
-        class="form-input"
-      />
+<div class="main-page">
+  <div class="container">
+    <div class="logo-container">
+      <img [src]="logoPath" alt="Logo" class="logo">
     </div>
-
-    <div class="form-group">
-      <label for="startDate">Start Date: 
-        <span *ngIf="loadedWrong" class="required-text">(Required)</span>
-        <span *ngIf="unequalDates" class="start-end-date-error">(Start and End Date cannot be equal)</span>
-      </label>
-      <input
-        type="date"
-        id="startDate"
-        [(ngModel)]="startDate"
-        name="startDate"
-        required
-        class="form-input"
-      />
+    <div class="back-btn-container">
+      <button (click)="goBack()" class="back-btn">
+        <span class="material-icons">arrow_back</span>
+      </button>
     </div>
+  
+    <h1 class="page-title">{{ title }}</h1>
 
-    <div class="form-group">
-      <label for="endDate">End Date: 
-        <span *ngIf="loadedWrong" class="required-text">(Required)</span>
-        <span *ngIf="endDateWrong" class="end-date-error">(End Date should be after today's date)</span>
-      </label>
-      <input
-        type="date"
-        id="endDate"
-        [(ngModel)]="endDate"
-        name="endDate"
-        required
-        class="form-input"
-      />
+    <div *ngIf="addMessage" class="success-message">
+      {{ addMessage }}
     </div>
-
-    <div class="form-group">
-      <label for="markup">Markup: 
-        <span *ngIf="loadedWrong" class="required-text">(Required)</span>
-        <span *ngIf="markupWrong" class="markup-error">(Markup must be less than 1)</span>
-      </label>
-      <input
-        type="number"
-        id="markup"
-        [(ngModel)]="markup"
-        name="markup"
-        required
-        min="0"
-        placeholder="Enter markup percentage"
-        class="form-input"
-      />
-    </div>
-
-    <div *ngFor="let roomType of roomTypes; let i = index" class="room-type-container">
-      <div class="room-type-card">
-
-       <div class="title-and-delete-icon">
-        <div>
-          <h4>Room Type {{ i + 1 }}</h4>
-        </div>
-        <div>
-          <button (click)="removeRoomType(i)" class="remove-btn">
-            <span class="material-symbols-outlined">delete</span>
-          </button>
-        </div>
-
-        </div>
-
-        <div class="form-group">
-          <label for="roomTypeName{{ i }}">Room Type Name:<span *ngIf="loadedWrong" class="required-text">(Required)</span></label>
-          <input
-            type="text"
-            id="roomTypeName{{ i }}"
-            [(ngModel)]="roomType.roomTypeName"
-            name="roomTypeName{{ i }}"
-            required
-            placeholder="Enter room type name"
-            class="form-input"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="basePrice{{ i }}">Base Price:<span *ngIf="loadedWrong" class="required-text">(Required)</span></label>
-          <input
-            type="number"
-            id="basePrice{{ i }}"
-            [(ngModel)]="roomType.basePrice"
-            name="basePrice{{ i }}"
-            required
-            min="0"
-            placeholder="Enter base price"
-            class="form-input"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="numberOfRooms{{ i }}">Number of Rooms:<span *ngIf="loadedWrong" class="required-text">(Required)</span></label>
-          <input
-            type="number"
-            id="numberOfRooms{{ i }}"
-            [(ngModel)]="roomType.numberOfRooms"
-            name="numberOfRooms{{ i }}"
-            required
-            min="1"
-            placeholder="Enter number of rooms"
-            class="form-input"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="maxAdults{{ i }}">Max Adults:<span *ngIf="loadedWrong" class="required-text">(Required)</span></label>
-          <input
-            type="number"
-            id="maxAdults{{ i }}"
-            [(ngModel)]="roomType.maxAdults"
-            name="maxAdults{{ i }}"
-            required
-            min="1"
-            placeholder="Enter maximum adults"
-            class="form-input"
-          />
-        </div>
-
-
+  
+    <form (submit)="submitContractData(); $event.preventDefault()" class="contract-form">
+      <div class="form-group">
+        <label for="hotelName">Hotel Name: <span *ngIf="loadedWrong" class="required-text">(Required)</span></label>
+        <input
+          type="text"
+          id="hotelName"
+          [(ngModel)]="hotelName"
+          name="hotelName"
+          required
+          placeholder="Enter hotel name"
+          class="form-input"
+        />
       </div>
-    </div>
-
-    <button type="button" (click)="addRoomType()" class="add-btn">Add Room Type</button>
-    <button type="submit" class="submit-btn">Submit</button>
-  </form>
+  
+      <div class="form-group">
+        <label for="startDate">Start Date: 
+          <span *ngIf="loadedWrong" class="required-text">(Required)</span>
+          <span *ngIf="unequalDates" class="start-end-date-error">(Start and End Date cannot be equal)</span>
+        </label>
+        <input
+          type="date"
+          id="startDate"
+          [(ngModel)]="startDate"
+          name="startDate"
+          required
+          class="form-input"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="endDate">End Date: 
+          <span *ngIf="loadedWrong" class="required-text">(Required)</span>
+          <span *ngIf="endDateWrong" class="end-date-error">(End Date should be after today's date)</span>
+        </label>
+        <input
+          type="date"
+          id="endDate"
+          [(ngModel)]="endDate"
+          name="endDate"
+          required
+          class="form-input"
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="markup">Markup Percentage: 
+          <span *ngIf="loadedWrong" class="required-text">(Required)</span>
+          <span *ngIf="markupWrong" class="markup-error">(Markup must be less than 1)</span>
+        </label>
+        <input
+          type="number"
+          id="markup"
+          [(ngModel)]="markup"
+          name="markup"
+          required
+          min="0"
+          max="100"
+          placeholder="Enter markup percentage"
+          class="form-input"
+        />
+      </div>
+  
+      <div *ngFor="let roomType of roomTypes; let i = index" class="room-type-container">
+        <div class="room-type-card">
+  
+         <div class="title-and-delete-icon">
+          <div>
+            <h4>Room Type {{ i + 1 }}</h4>
+          </div>
+          <div>
+            <button (click)="removeRoomType(i)" class="remove-btn" type="button">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+          </div>
+  
+          </div>
+  
+          <div class="form-group room-type-group">
+            <label for="roomTypeName{{ i }}">Room Type Name:<span *ngIf="loadedWrong" class="required-text">(Required)</span></label>
+            <input
+              type="text"
+              id="roomTypeName{{ i }}"
+              [(ngModel)]="roomType.roomTypeName"
+              name="roomTypeName{{ i }}"
+              required
+              placeholder="Enter room type name"
+              class="form-input"
+            />
+          </div>
+  
+          <div class="form-group room-type-group">
+            <label for="basePrice{{ i }}">Base Price:<span *ngIf="loadedWrong" class="required-text">(Required)</span></label>
+            <input
+              type="number"
+              id="basePrice{{ i }}"
+              [(ngModel)]="roomType.basePrice"
+              name="basePrice{{ i }}"
+              required
+              min="0"
+              placeholder="Enter base price"
+              class="form-input"
+            />
+          </div>
+  
+          <div class="form-group room-type-group">
+            <label for="numberOfRooms{{ i }}">Number of Rooms:<span *ngIf="loadedWrong" class="required-text">(Required)</span></label>
+            <input
+              type="number"
+              id="numberOfRooms{{ i }}"
+              [(ngModel)]="roomType.numberOfRooms"
+              name="numberOfRooms{{ i }}"
+              required
+              min="1"
+              placeholder="Enter number of rooms"
+              class="form-input"
+            />
+          </div>
+  
+          <div class="form-group room-type-group">
+            <label for="maxAdults{{ i }}">Max Adults:<span *ngIf="loadedWrong" class="required-text">(Required)</span></label>
+            <input
+              type="number"
+              id="maxAdults{{ i }}"
+              [(ngModel)]="roomType.maxAdults"
+              name="maxAdults{{ i }}"
+              required
+              min="1"
+              placeholder="Enter maximum adults"
+              class="form-input"
+            />
+          </div>
+  
+  
+        </div>
+      </div>
+  
+      <button type="button" (click)="addRoomType()" class="add-btn">Add Room Type</button>
+      <button type="submit" class="submit-btn">Submit</button>
+    </form>
+  </div>
 </div>
+
+

@@ -1,10 +1,16 @@
 <div class="container">
   <h1 class="page-title">Manage Contracts</h1>
-
+  <div class="logo-container">
+    <img [src]="logoPath" alt="Logo" class="logo">
+  </div>
   <div class="back-btn-container">
     <button (click)="goBack()" class="back-btn">
       <span class="material-icons">arrow_back</span>
     </button>
+  </div>
+
+  <div *ngIf="deleteMessage" class="success-message">
+    {{ deleteMessage }}
   </div>
 
   <!-- Check if contracts data is loaded -->

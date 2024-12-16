@@ -17,6 +17,10 @@ export class SearchContractsComponent implements OnInit {
   numberOfNights: number = 1;
   selections: any[] = [{ numberOfRooms: 1, numberOfAdults: 1 }];
   results: any[] = [];
+  checkInDateWrong: boolean = false;
+  checkInDateEmpty: boolean = false;
+  logoPath: string = 'assets/logo.jpg';
+  duplicateAdultsError: boolean = false;
 
   constructor(
     private router: Router,
@@ -49,20 +53,32 @@ export class SearchContractsComponent implements OnInit {
   }
 
   submitSearchData() {
-    // Check if the check-in date is provided
-    if (!this.checkInDate || this.checkInDate.trim() === '') {
-      alert('Check-In Date is required.');
-      return; // Stop the function if validation fails
+    this.checkInDateWrong = false;
+    this.checkInDateEmpty = false;
+    this.duplicateAdultsError = false;
+
+    if (!this.validateCheckInDateNonEmpty()) {
+      window.scrollTo(0, 0); // Scroll to the top of the page
+      return;
     }
 
-    // Create the search data object
+    if (!this.validateCheckInDate()) {
+      window.scrollTo(0, 0); // Scroll to the top of the page
+      return;
+    }
+
+    if (!this.validateUniqueAdults()) {
+      window.scrollTo(0, 0); // Scroll to the top of the page
+      return;
+    }
+
+
     const searchData = {
       checkInDate: this.checkInDate,
       numberOfNights: this.numberOfNights,
       selections: this.selections
     };
 
-    // Call the service to fetch results based on searchData
     this.contractService.searchContracts(searchData).subscribe({
       next: (response) => {
         this.results = response; // Assign fetched results to display later
@@ -79,13 +95,44 @@ export class SearchContractsComponent implements OnInit {
         sessionStorage.removeItem('searchFormData'); // Clear session storage after search
       },
       error: (err) => {
-        console.error('Search Error:', err);
-        alert(err);
-      }
+        console.error('Error during search:', err);
+      },
     });
   }
 
-  // Save form data to sessionStorage
+  private validateCheckInDate(): boolean {
+    const today = new Date();
+    const checkInDateObj = new Date(this.checkInDate);
+
+    if (checkInDateObj < today) {
+      this.checkInDateWrong = true;
+      return false;
+    }
+    return true;
+  }
+
+  private validateCheckInDateNonEmpty(): boolean {
+    if (!this.checkInDate) {
+      this.checkInDateEmpty = true;
+      return false;
+    }
+    return true;
+  }
+
+  private validateUniqueAdults(): boolean {
+    this.duplicateAdultsError = false;
+    const adultsSet = new Set<number>();
+  
+    for (const selection of this.selections) {
+      if (adultsSet.has(selection.numberOfAdults)) {
+        this.duplicateAdultsError = true;
+        return false;
+      }
+      adultsSet.add(selection.numberOfAdults);
+    }
+    return true;
+  }
+
   saveFormData() {
     const formData = {
       checkInDate: this.checkInDate,

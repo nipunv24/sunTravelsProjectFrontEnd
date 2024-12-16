@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 })
 export class AddContractComponent {
   title = 'SunTravels Add Contract';
+  logoPath: string = 'assets/logo.jpg';
+  addMessage: string = '';
 
   hotelName: string = '';
   startDate: string = '';
@@ -112,9 +114,9 @@ export class AddContractComponent {
   }
 
   private validateMarkup(): boolean {
-    if (this.markup >= 1) {
+    if (this.markup < 0 || this.markup > 100) {
       this.markupWrong = true;
-      this.errorMessage = 'Markup must be greater than 1.';
+      this.errorMessage = 'Markup must be greater than 100.';
       return false;
     }
     return true;
@@ -139,14 +141,20 @@ export class AddContractComponent {
       hotelName: this.hotelName,
       startDate: startDateFormatted,
       endDate: endDateFormatted,
-      markup: this.markup,
+      markup: (this.markup)/100,
       roomTypes: this.roomTypes
     };
+
+    console.log(this.markup);
 
     this.contractService.postContractData(contractData).subscribe({
       next: (response) => {
         console.log('Success:', response);
-        alert('Contract data submitted successfully');
+        window.scrollTo(0, 0);
+        this.addMessage = 'Contract added successfully';
+        setTimeout(()=>{
+          this.addMessage = '';
+        },3000);
         this.loadedWrong = false;
       },
       error: (err) => {
