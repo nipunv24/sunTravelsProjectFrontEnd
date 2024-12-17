@@ -102,17 +102,12 @@ export class SearchContractsComponent implements OnInit {
 
   private validateCheckInDate(): boolean {
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Set the time to 00:00:00 for today
-  
     const checkInDateObj = new Date(this.checkInDate);
-    checkInDateObj.setHours(0, 0, 0, 0); // Set the time to 00:00:00 for the check-in date
-  
+
     if (checkInDateObj < today) {
       this.checkInDateWrong = true;
       return false;
     }
-  
-    this.checkInDateWrong = false;
     return true;
   }
 

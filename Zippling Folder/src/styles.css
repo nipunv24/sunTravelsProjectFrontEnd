@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.bodoni-moda-custom {
+    font-family: "Bodoni Moda", serif;
+    font-optical-sizing: auto;  /* Automatically adjusts the font size */
+    font-weight: 700;  /* You can change the weight from 400 to 900 depending on your preference */
+    font-style: normal;  /* You can change this to 'italic' if needed */
+  }

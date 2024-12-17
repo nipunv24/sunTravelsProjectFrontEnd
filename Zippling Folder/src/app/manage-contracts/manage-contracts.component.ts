@@ -114,7 +114,6 @@ export class ManageContractsComponent implements OnInit {
   logoPath: string = 'assets/logo.jpg';
   deleteMessage: string = ''; 
   manageContractImagePath: string = 'assets/manageContractsImage.jpg';
-  imagePath: string = 'assets/backgroundImage.jpg';
 
   constructor(
     private contractService: ContractService,

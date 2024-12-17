@@ -53,18 +53,15 @@
 
 .result-card {
   background-color: #fdfdfd;
-  border: 3.5px solid transparent; /* Base border for the artistic effect */
-  border-image: linear-gradient(to right, #ff8d8d, #33658a);
-  border-image-slice: 1; /* Ensures the gradient fills the border */
+  border: 1px solid #ddd;
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow similar to manage-contracts */
+  transition: transform 0.3s ease-in-out;
 }
 
-/* Hover effect remains the same */
 .result-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Same hover effect as manage-contracts */
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow on hover */
 }
 

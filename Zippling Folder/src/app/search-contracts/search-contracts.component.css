@@ -1,0 +1,252 @@
+/* General container styling */
+.container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  font-family: "Varela Round", sans-serif;
+}
+
+/* Title */
+.page-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Back button container */
+.back-btn-container {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* Form styling */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #333;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+  font-family: "Varela Round", sans-serif;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.form-group:first-child {
+  margin-top: 25px; /* Add spacing above the first input field */
+}
+
+::placeholder {
+  font-family: "Varela Round", sans-serif; /* Change font family */
+  font-size: 14px; /* Change font size */
+  color: #999999; /* Change placeholder color */ /* Optional: Italicize placeholder */
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgb(0, 30, 54);
+}
+
+/* Styling for Selection Cards */
+.selection-container {
+  margin-bottom: 20px;
+}
+
+.selection-card {
+  background-color: #fafafa;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.selection-card h4 {
+  color: #333;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.error-message-selections{
+  color: #e74c3c;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.error-message{
+  color: #e74c3c;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+
+/* Button styling */
+button {
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.remove-btn {
+  background-color: #ec1919;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+  padding: 4px 6px;
+}
+
+.remove-btn:hover {
+  background-color: #741409;
+}
+
+
+.add-btn{
+  background-color: transparent; /* Transparent initial state */
+  color: rgb(6, 71, 109); /* Base blue text color */
+  border: 1px solid rgb(55, 109, 109); /* Blue border */
+  border-radius: 6px; /* Smooth rounded edges */
+  padding: 8px 16px; /* Compact padding */
+  font-size: 15px; /* Slightly smaller font size for elegance */
+  font-weight: 600; /* Semi-bold for clear visibility */
+  cursor: pointer; /* Pointer on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  transition: all 0.3s ease; /* Smooth transition for hover and active states */
+    /* Smaller button width */
+  text-align: center; /* Ensure centered text */
+  font-family: "Varela Round", sans-serif;
+}
+
+.submit-btn {
+  background-color: transparent; /* Transparent initial state */
+  color: rgb(6, 71, 109); /* Base blue text color */
+  border: 1px solid rgb(253, 255, 255); /* Blue border */
+  border-radius: 6px; /* Smooth rounded edges */
+  padding: 8px 16px; /* Compact padding */
+  font-size: 18px; /* Slightly smaller font size for elegance */
+  font-weight: 600; /* Semi-bold for clear visibility */
+  cursor: pointer; /* Pointer on hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow effect */
+  transition: all 0.3s ease; /* Smooth transition for hover and active states */
+    /* Smaller button width */
+  text-align: center; /* Ensure centered text */
+  font-family: "Varela Round", sans-serif;
+}
+
+
+.add-btn:hover {
+  background-color: rgb(6, 60, 104); /* Filled blue background on hover */
+  color: white; /* White text on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.submit-btn:hover {
+  background-color: rgb(6, 87, 66); /* Filled blue background on hover */
+  color: white; /* White text on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.add-btn:active, .submit-btn:active {
+  background-color: rgb(4, 50, 90); /* Darker blue for active state */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Deeper shadow on click */
+  transform: translateY(0); /* Return to normal position */
+}
+
+.add-btn {
+  color: rgb(6, 71, 109); /* Specific blue shade for "Add" button */
+  border-color: rgb(6, 87, 66);
+  max-width: 150px;
+}
+
+.submit-btn {
+  color: #02414d; /* Slightly lighter blue shade for "Submit" button */
+  border-color: #035555;
+  margin-top: 40px;
+}
+
+
+.submit-btn:active {
+  background-color: #0056b3;
+}
+
+/* Error messages */
+.required-text {
+  color: #e74c3c;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+/* Title and Delete Icon */
+.title-and-delete-icon {
+  display: flex; /* Makes this container a flexbox */
+  flex-direction: row; /* Ensures the children are arranged in a row */
+  justify-content: space-between; /* Ensures space between the two elements */
+  align-items: center; /* Vertically aligns items in the center */
+}
+
+/*Logo Container and Logo Css Code*/
+.logo-container {
+  position: absolute; /* Position the logo absolutely */
+  top: 20px;  /* Adjust the distance from the top */
+  right: 20px; /* Adjust the distance from the right */
+  z-index: 10;  /* Ensure the logo stays on top */
+}
+
+.logo {
+  width: 12vw;  /* Adjust the width of the logo */
+  height: auto;  /* Maintain the aspect ratio */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px;
+  }
+
+  .back-btn {
+    padding: 8px 16px;
+  }
+
+  .form-input {
+    font-size: 0.9rem;
+  }
+
+  .submit-btn {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,23 @@
+<div class="home-container" [style.backgroundImage]="'url(' + imagePath + ')'" >
+  <!-- Logo Section -->
+  <div class="logo-container">
+    <img [src]="logoPath" alt="Logo" class="logo">
+  </div>
+
+  <div>
+    <h1 class="main-heading">Welcome to Sun Travels!</h1>
+  </div>
+
+  <div class="button-container">
+    <div class="custom-button add-contract" (click)="navigateToAddContract()">
+      <span class="button-text">Add Contracts</span>
+    </div>
+    <div class="custom-button manage-contracts" (click)="navigateToManageContracts()">
+      <span class="button-text">Manage & View Contracts</span>
+    </div>
+    <div class="custom-button search-contracts" (click)="navigateToSearchContracts()">
+      <span class="button-text">Search Hotels</span>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

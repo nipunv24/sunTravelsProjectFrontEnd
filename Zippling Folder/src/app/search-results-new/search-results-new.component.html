@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="back-btn-container">
+    <button (click)="goBack()" class="back-btn">
+      <span class="material-icons">arrow_back</span>
+    </button>
+  </div>
+
+  <h1 class="page-title">Hotels Available</h1>
+
+  <div *ngIf="results.length === 0" class="no-results">
+    <p>No results found. Try modifying your search criteria.</p>
+  </div>
+
+  <div *ngIf="results.length > 0" class="results-grid">
+    <div *ngFor="let result of results" class="result-card">
+      <h2 class="hotel-name">{{ result.hotelName }}</h2>
+      <div *ngFor="let room of result.rooms" class="room-info">
+        <p><strong>Room Type:</strong> {{ room.roomTypeName }}</p>
+        <p><strong>Price:</strong> {{ room.basePrice | currency }}</p>
+        <p><strong>Number of Rooms:</strong> {{ room.numberOfRooms }}</p>
+        <p><strong>Max Adults:</strong> {{ room.maxAdults }}</p>
+      </div>
+    </div>
+  </div>
+</div>

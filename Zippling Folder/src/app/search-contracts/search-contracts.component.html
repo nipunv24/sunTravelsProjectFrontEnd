@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="logo-container">
+    <img [src]="logoPath" alt="Logo" class="logo">
+  </div>
+  <div class="back-btn-container">
+    <button (click)="goBack()" class="back-btn">
+      <span class="material-icons">arrow_back</span>  
+    </button>
+  </div>
+
+  <h1 class="page-title">Search Hotels</h1>
+
+  <!-- Error messages -->
+
+
+  <!-- Form -->
+  <form (ngSubmit)="submitSearchData()" class="search-form" novalidate>
+    <div class="form-group">
+      <label for="checkInDate">Check-In Date:
+        <span *ngIf="checkInDateEmpty" class="error-message">
+          (Check-In date is required)
+        </span>
+        <span *ngIf="checkInDateWrong" class="error-message">
+          (Check-In date should be today or a future date)
+        </span>
+      </label>
+      <input
+        type="date"
+        id="checkInDate"
+        [(ngModel)]="checkInDate"
+        name="checkInDate"
+        required
+        class="form-input"
+        (ngModelChange)="saveFormData()"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="numberOfNights">Number of Nights:</label>
+      <input
+        type="number"
+        id="numberOfNights"
+        [(ngModel)]="numberOfNights"
+        name="numberOfNights"
+        required
+        min="1"
+        placeholder="Enter number of nights"
+        class="form-input"
+        (ngModelChange)="saveFormData()"
+      />
+    </div>
+
+    <div *ngFor="let selection of selections; let i = index" class="selection-container">
+      <div class="selection-card">
+        
+        <!-- Title and Delete Icon Container -->
+        <div class="title-and-delete-icon">
+          <div>
+            <h4>Selection {{ i + 1 }}
+              <span *ngIf="duplicateAdultsError && i === 0" class="error-message-selections">
+                (Multiple selections cannot have the same number of adults! Put them as one entry.)
+              </span>
+            </h4>
+          </div>
+          <div>
+            <button type="button" (click)="removeSelection(i)" class="remove-btn">
+              <span class="material-symbols-outlined">delete</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Error message for the first selection -->
+
+
+        <div class="form-group">
+          <label for="numberOfRooms{{ i }}">Number of Rooms:</label>
+          <input
+            type="number"
+            id="numberOfRooms{{ i }}"
+            [(ngModel)]="selection.numberOfRooms"
+            name="numberOfRooms{{ i }}"
+            required
+            min="1"
+            placeholder="Enter number of rooms"
+            class="form-input"
+            (ngModelChange)="saveFormData()"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="numberOfAdults{{ i }}">Number of Adults:</label>
+          <input
+            type="number"
+            id="numberOfAdults{{ i }}"
+            [(ngModel)]="selection.numberOfAdults"
+            name="numberOfAdults{{ i }}"
+            required
+            min="1"
+            placeholder="Enter number of adults"
+            class="form-input"
+            (ngModelChange)="saveFormData()"
+          />
+        </div>
+      </div>
+    </div>
+
+    <button type="button" (click)="addSelection()" class="add-btn">Add Selection</button>
+    <button type="submit" class="submit-btn">Search Hotels</button>
+  </form>
+</div>
