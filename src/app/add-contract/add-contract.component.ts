@@ -27,6 +27,11 @@ export class AddContractComponent {
   endDateWrong: boolean = false;
   markupWrong: boolean = false; // New flag for markup validation
   errorMessage: string | null = null;
+  roomNameEmpty: boolean = false;
+  roomsNumberAndAdultsWrong: boolean = false;
+  roomBasePriceWrong: boolean = false;
+  roomBasePriceError: string | null = null;
+  roomCountAndAdultsError: string | null = null;
 
   constructor(
     private contractService: ContractService,
@@ -64,7 +69,17 @@ export class AddContractComponent {
       return;
     }
 
-    if (!this.validateRoomTypes()) {
+    if (!this.validateRoomTypeName()) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    
+    if (!this.validateRoomCountAndAdultCount()) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    
+    if (!this.validateRoomBasePrice()) {
       window.scrollTo(0, 0);
       return;
     }
@@ -79,6 +94,9 @@ export class AddContractComponent {
     this.endDateWrong = false;
     this.markupWrong = false; // Reset the markupWrong flag
     this.errorMessage = null;
+    this.roomBasePriceWrong = false;
+    this.roomNameEmpty = false;
+    this.roomsNumberAndAdultsWrong = false;
   }
 
   private validateRequiredFields(): boolean {
@@ -102,6 +120,7 @@ export class AddContractComponent {
   }
 
   private validateEndDate(): boolean {
+    const startDateObj = new Date(this.startDate);
     const today = new Date();
     const endDateObj = new Date(this.endDate);
     // Check if the end date is not after today or is equal to today
@@ -110,6 +129,14 @@ export class AddContractComponent {
       this.errorMessage = 'End date must be after today\'s date.';
       return false;
     }
+
+    if (startDateObj > endDateObj) {
+      this.endDateWrong = true;
+      this.errorMessage = 'Start date cannot be after the end date.';
+      return false;
+    }
+
+    
     return true;
   }
 
@@ -122,16 +149,41 @@ export class AddContractComponent {
     return true;
   }
 
-  private validateRoomTypes(): boolean {
+  private validateRoomTypeName(): boolean {
     for (const roomType of this.roomTypes) {
-      if (!roomType.roomTypeName || roomType.basePrice <= 0 || roomType.numberOfRooms <= 0 || roomType.maxAdults <= 0) {
-        this.loadedWrong = true;
+      if (!roomType.roomTypeName) {
+        this.roomNameEmpty = true;
         this.errorMessage = 'Please fill all fields for room types with valid values.';
         return false;
       }
     }
     return true;
   }
+
+  private validateRoomBasePrice(): boolean {
+    this.roomBasePriceError = null;
+    for (const roomType of this.roomTypes) {
+      if (roomType.basePrice <= 0) {
+        this.roomBasePriceWrong = true;
+        this.roomBasePriceError = '(Base Price cannot be negative!)';
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private validateRoomCountAndAdultCount(): boolean {
+    this.roomCountAndAdultsError = null;
+    for (const roomType of this.roomTypes) {
+      if (!Number.isInteger(roomType.numberOfRooms) || !Number.isInteger(roomType.maxAdults) || roomType.numberOfRooms<0 || roomType.maxAdults<0) {
+        this.roomsNumberAndAdultsWrong = true;
+        this.roomCountAndAdultsError = '(Number of rooms and adults should be positive integers!)';
+        return false;
+      }
+    }
+    return true;
+  }
+
 
   private submitContract() {
     const startDateFormatted = this.startDate.split('T')[0];

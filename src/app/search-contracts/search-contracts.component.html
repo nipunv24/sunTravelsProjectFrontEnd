@@ -58,7 +58,10 @@
           <div>
             <h4>Selection {{ i + 1 }}
               <span *ngIf="duplicateAdultsError && i === 0" class="error-message-selections">
-                (Multiple selections cannot have the same number of adults! Put them as one entry.)
+                (Multiple selections cannot have the same number of adults! Put them as one entry!)
+              </span>
+              <span *ngIf="numberOfRoomsOrAdultsWrongError && i ===0" class="error-message">
+                (Number of adults and number of Rooms should be a positive integer!)
               </span>
             </h4>
           </div>
@@ -105,6 +108,7 @@
     </div>
 
     <button type="button" (click)="addSelection()" class="add-btn">Add Selection</button>
-    <button type="submit" class="submit-btn">Search Hotels</button>
+    <button type="submit"
+    class="submit-btn">Search Hotels</button>
   </form>
 </div>

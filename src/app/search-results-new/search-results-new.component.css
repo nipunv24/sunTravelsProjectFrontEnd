@@ -1,3 +1,99 @@
+.highlight-room-type {
+  padding: 2px;
+  color: #33658a;
+  border-radius: 5px;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+/* Style for max adults */
+.max-adults {
+  color: rgb(255, 74, 74);
+  font-weight: bold;
+}
+
+/* Style for total price */
+.total-price {
+  color: rgb(0, 156, 21);
+  font-weight: bold;
+}
+
+.total-hotel-price {
+  font-weight: bold;
+  color: green; /* Green color for the price */
+  margin-left: 15px; /* Add some space between the hotel name and price */
+}
+
+/* Style for total price */
+
+
+/* Updated checkbox styling */
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+  display: none; /* Hide the default checkbox */
+}
+
+.checkbox-label .tick-icon {
+  width: 25px;
+  height: 25px;
+  border: 2px solid #33658a;
+  border-radius: 5px; /* Slightly rounded corners for the checkbox */
+  margin-right: 10px;
+  position: relative;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .tick-icon {
+  background-color: #33658a; /* Background color when checked */
+  border-color: #33658a; /* Change border color when checked */
+}
+
+.checkbox-label .tick-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .tick-icon::after {
+  opacity: 1; /* Show the white tick */
+}
+
+.checkbox-label span {
+  font-family: 'Varela Round', sans-serif;
+  font-weight: bold;
+  color: #33658a;
+  font-size: 1.25rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .tick-icon + span {
+  color: #33658a;
+}
+
+/* Align the checkbox and tick icon to the right */
+.select-room {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+
+
+
 .container {
   max-width: 1200px;
   margin: 20px auto;
@@ -69,7 +165,7 @@
 }
 
 .hotel-name {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: bold;
   margin-bottom: 15px;
   color: #333;
@@ -83,16 +179,30 @@
   border: 1px solid #eee;
   border-radius: 5px;
   font-family: 'Varela Round', sans-serif;
+  margin-top: 5%;
 }
 
 .room-info p {
   margin: 5px 0;
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: #555;
 }
 
 .room-info p strong {
   color: #000;
+}
+
+/*Logo Container and Logo Css Code*/
+.logo-container {
+  position: absolute; /* Position the logo absolutely */
+  top: 20px;  /* Adjust the distance from the top */
+  right: 20px; /* Adjust the distance from the right */
+  z-index: 10;  /* Ensure the logo stays on top */
+}
+
+.logo {
+  width: 12vw;  /* Adjust the width of the logo */
+  height: auto;  /* Maintain the aspect ratio */
 }
 
 /* Responsive adjustments */

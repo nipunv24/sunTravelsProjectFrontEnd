@@ -21,6 +21,8 @@ export class SearchContractsComponent implements OnInit {
   checkInDateEmpty: boolean = false;
   logoPath: string = 'assets/logo.jpg';
   duplicateAdultsError: boolean = false;
+  numberOfRoomsOrAdultsWrongError: boolean = false;
+ 
 
   constructor(
     private router: Router,
@@ -56,6 +58,12 @@ export class SearchContractsComponent implements OnInit {
     this.checkInDateWrong = false;
     this.checkInDateEmpty = false;
     this.duplicateAdultsError = false;
+    this.numberOfRoomsOrAdultsWrongError = false;
+
+    if(!this.validateNumberOfRoomsAndAdults()){
+      window.scrollTo(0,0);
+      return;
+    }
 
     if (!this.validateCheckInDateNonEmpty()) {
       window.scrollTo(0, 0); // Scroll to the top of the page
@@ -115,6 +123,29 @@ export class SearchContractsComponent implements OnInit {
     this.checkInDateWrong = false;
     return true;
   }
+
+  private validateNumberOfRoomsAndAdults(): boolean {
+    this.numberOfRoomsOrAdultsWrongError = false; // Reset the error flag
+    
+    // Check if any selection has an invalid number of rooms or adults
+    for (const selection of this.selections) {
+      const { numberOfRooms, numberOfAdults } = selection;
+  
+      // Check if numberOfRooms and numberOfAdults are positive integers
+      if (
+        numberOfRooms <= 0 || 
+        !Number.isInteger(numberOfRooms) || 
+        numberOfAdults <= 0 || 
+        !Number.isInteger(numberOfAdults)
+      ) {
+        this.numberOfRoomsOrAdultsWrongError = true; // Set the error flag
+        return false; // Validation fails
+      }
+    }
+  
+    return true; // Validation passes
+  }
+
 
   private validateCheckInDateNonEmpty(): boolean {
     if (!this.checkInDate) {

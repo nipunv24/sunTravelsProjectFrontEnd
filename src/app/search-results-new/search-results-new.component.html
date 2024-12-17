@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="logo-container">
+    <img [src]="logoPath" alt="Logo" class="logo">
+  </div>
   <div class="back-btn-container">
     <button (click)="goBack()" class="back-btn">
       <span class="material-icons">arrow_back</span>
@@ -13,12 +16,38 @@
 
   <div *ngIf="results.length > 0" class="results-grid">
     <div *ngFor="let result of results" class="result-card">
-      <h2 class="hotel-name">{{ result.hotelName }}</h2>
+      <h2 class="hotel-name">
+        {{ result.hotelName }}
+        <span class="total-hotel-price">&nbsp;&nbsp; Total:{{ result.totalHotelPrice | currency }}</span>
+      </h2>
+
       <div *ngFor="let room of result.rooms" class="room-info">
-        <p><strong>Room Type:</strong> {{ room.roomTypeName }}</p>
-        <p><strong>Price:</strong> {{ room.basePrice | currency }}</p>
-        <p><strong>Number of Rooms:</strong> {{ room.numberOfRooms }}</p>
-        <p><strong>Max Adults:</strong> {{ room.maxAdults }}</p>
+        <div class="room-details">
+          <p><strong>Room Type:</strong>
+            <span class="highlight-room-type">
+              {{ room.roomTypeName }}
+            </span>
+          </p>
+          <p><strong>Max Adults:</strong>
+            <span class="max-adults">{{ room.maxAdults }}</span>
+          </p>
+          <p *ngIf="room.numberOfRoomsNew > 0">
+            <strong>Selected Rooms:</strong> {{ room.numberOfRoomsNew }}
+          </p>
+          <p *ngIf="room.numberOfRoomsNew > 0">
+            <strong>Price:</strong>
+            <span class="total-price">{{ room.totalPrice | currency }}</span>
+          </p>
+        </div>
+
+        <!-- Add a checkbox to select rooms with styled tick icon -->
+        <div class="select-room">
+          <label class="checkbox-label">
+            <input type="checkbox" (change)="onRoomSelectionChange(room, $event)" />
+            <span class="tick-icon"></span>
+            Select this room
+          </label>
+        </div>
       </div>
     </div>
   </div>
