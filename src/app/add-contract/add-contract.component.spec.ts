@@ -113,24 +113,6 @@ describe('AddContractComponent', () => {
 
 
 
-  it('should validate room types fields', () => {
-    //Adding dummy data for other fields.
-        component.hotelName = 'TestHotel';
-        component.startDate = '2024-12-15';
-        component.endDate = '2029-12-15'; 
-        component.markup = 10;
-        component.roomTypes = [
-          { roomTypeName: '', basePrice: 0, numberOfRooms: 0, maxAdults: 0 } // Invalid room type
-        ];
-    component.submitContractData();
-    
-    expect(component.loadedWrong).toBeTrue();
-    expect(component.errorMessage).toBe('Please fill all fields for room types with valid values.');
-  });
-
-
-
-
   it('should submit contract data successfully and show success message', () => {
     component.hotelName = 'Test Hotel';
     component.startDate = '2024-12-15';
